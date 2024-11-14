@@ -107,23 +107,83 @@
 // console.log("operation ends");
 
 
-console.log("Start...");
-const fsPromises = require("fs").promises
-const content = `This is a goat`
+// //create file usin fs.writer
+const fs = require('fs');
+const fsPromises = required("fs").promises;
+const content = 'This is my first node content.';
+
+// to write file with node
+fs.writeFile('example.txt', content, 'utf8', (error) => {
+  if (error) {
+    console.error('An error occurred while writing to the file:', error);
+    return;
+  }
+  console.log('File has been written successfully.');
+});
 
 
+// to rad  a file with readfile function
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log(data);
+});
 
-const appendFile = async (filepath) => {
-  try{
-    await fsPromises.appendFile(filepath, content + '\n')
-    console.log("Apeend done");
-    
-  }catch (error){
-    console.log(error);
-    
+
+// to read file with readfileSync method
+try {
+  const data = fs.readFileSync('example.txt', 'utf8');
+  console.log(data);
+} catch (err) {
+  console.error(err);
+}
+
+
+// to  append a function using appendfile func
+const fs3 = require('fs').promises;
+async function appendToFile() {
+   
+  try {
+    await fs3.appendFile("example.txt", content + "\n");
+    console.log(`appended: ${content}`);
+  } catch (error) {
+    console.error(`Error appending to file: ${error.message}`);
   }
 }
+
+appendToFile()
+
+
+// Example
+
+console.log("Start...");
+
+const filesytem = require('fs')
+
+const words = "This is for writerFile."
+
+// Write file with fs.writeFile() function
+
+filesytem.writeFile("index.html", content, (error)=>{
+  if(error){
+    console.log(error);
+    return;
+  }
+  console.log("Created Successfully")
+})
+
+// append file with fs.appendFile() function
+const appendFile = async (filepath)=>{
+try{
+  await fsPromises.appendFile(filepath, content + '/n');
+  console.log("Appended content")
+}catch(error){
+console.log(error)
+}
+}
+
 appendFile("clp.txt")
-console.log("Operate on me doc");
 
-
+console.log("Operation ended...")
