@@ -1,0 +1,2 @@
+This is the content to be written to the file.const var = "My name is Chapon"
+"My name is Chapon"
